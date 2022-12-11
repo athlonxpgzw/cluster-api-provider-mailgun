@@ -22,6 +22,15 @@ import (
 
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
+type Priority string
+
+const (
+	PriorityUrgent = Priority("Urgent")
+
+	PriorityExtremelyUrgent = Priority("ExtremelyUrgent")
+
+	PriorityBusniessCritical = Priority("BusniessCritical")
+)
 
 // MailgunClusterSpec defines the desired state of MailgunCluster
 type MailgunClusterSpec struct {
@@ -29,13 +38,18 @@ type MailgunClusterSpec struct {
 	// Important: Run "make" to regenerate code after modifying this file
 
 	// Foo is an example field of MailgunCluster. Edit mailguncluster_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	Priority Priority `json:"Priority"`
+
+	Request string `json:"Request"`
+
+	Requester string `json:"Requester"`
 }
 
 // MailgunClusterStatus defines the observed state of MailgunCluster
 type MailgunClusterStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	MessageID *string `json:"Reponse"`
 }
 
 //+kubebuilder:object:root=true
